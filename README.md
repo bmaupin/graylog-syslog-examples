@@ -13,21 +13,21 @@ When using log4j v1 to send logs to Graylog via syslog, if a log includes a stac
 ```
 
 
+### The solution
+Use `EnhancedPatternLayout` with `%throwable`:
+
+```
+<appender name="syslog" class="org.apache.log4j.net.SyslogAppender">
+  <param name="SyslogHost" value="localhost:8514"/>
+  <layout class="org.apache.log4j.EnhancedPatternLayout">
+    <param name="ConversionPattern" value="%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} testlog4j1 [%t] %-5p %c %x - %m%n%throwable"/>
+  </layout>
+</appender>
+```
+
+
 ### Build and run
 ```
 ./gradlew build
 ./gradlew run
 ```
-
-
-### To try
-- [x] Customize the stack trace renderer (https://stackoverflow.com/a/38486720/399105)
-    - This seems to work, but it still sends the log as two parts: 1. the error, 2. the stack trace
-
-        ```
-        <11>2019-05-01T11:31:45.553-0400 testlog4j1 [main] ERROR App  - Test error message, with stack trace\n
-        <11>java.lang.IllegalArgumentException: Test exception message\n\tat App.logErrorWithStackTrace(App.java:30)\n\tat App.okayThatsEnough(App.java:23)\n\tat App.notLongEnough(App.java:19)\n\tat App.makeStackTraceLonger(App.java:15)\n\tat App.testLoggingWithStackTraces(App.java:11)\n\tat App.main(App.java:7)
-        ```
-- [ ] SocketAppender
-    - Logs will need to be formatted expliclity for syslog
-    - This should allow us to send using TCP as well
