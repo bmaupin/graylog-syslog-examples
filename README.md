@@ -25,6 +25,11 @@ Use `EnhancedPatternLayout` with `%throwable`:
 </appender>
 ```
 
+Result:
+```
+<11>2019-05-01T16:30:08.008-0400 testlog4j1 [main] ERROR App null - Test error message, with stack trace\njava.lang.IllegalArgumentException: Test exception message\n\tat App.logErrorWithStackTrace(App.java:30)\n\tat App.okayThatsEnough(App.java:23)\n\tat App.notLongEnough(App.java:19)\n\tat App.makeStackTraceLonger(App.java:15)\n\tat App.testLoggingWithStackTraces(App.java:11)\n\tat App.main(App.java:7)\n
+```
+
 
 ### Build and run
 ```
