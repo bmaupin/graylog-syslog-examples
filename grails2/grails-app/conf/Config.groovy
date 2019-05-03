@@ -103,6 +103,17 @@ log4j.main = {
     //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     //}
 
+    appenders {
+        appender new org.apache.log4j.net.SyslogAppender(
+            name: 'syslog',
+            syslogHost: 'localhost:514',
+            layout: new org.apache.log4j.EnhancedPatternLayout(conversionPattern: "%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} ${grails.util.Metadata.current.getApplicationName()} [%t] %-5p %c %x - %m%n%throwable")
+        )
+    }
+    root {
+        info 'stdout', 'syslog'
+    }
+
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
            'org.codehaus.groovy.grails.web.pages',          // GSP
            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
