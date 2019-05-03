@@ -2,7 +2,7 @@
 1. Add a syslog appender in `<Appenders>`:
 
     ```xml
-    <Syslog name="syslog" format="RFC5424" host="127.0.0.1" port="514" protocol="UDP" appName="testlog4j2" mdcId="mdc">
+    <Syslog name="syslog" format="RFC5424" host="localhost" port="514" protocol="UDP" appName="testlog4j2" mdcId="mdc">
       <LoggerFields>
         <KeyValuePair key="thread" value="%t"/>
         <KeyValuePair key="priority" value="%p"/>
@@ -14,12 +14,11 @@
 
     Change `host`, `port`, and `appName` as needed. See below for more information on these parameters.
 
-1. Reference the syslog in the root appender, e.g.:
+1. Reference the syslog appender in the root logger, e.g.:
 
     ```xml
     <Loggers>
-      <Logger name="org.apache.log4j.xml" level="info"/>
-      <Root level="debug">
+      <Root level="info">
         <AppenderRef ref="syslog"/>
     ```
 
@@ -36,7 +35,7 @@ This directory contains a minimal app that can be used to test sending log4j2 lo
     ```
 
 
-### Notes on syslog appender parameters
+### Notes on syslog appender configuration
 - `appName=`
     - This is optional but highly recommended in order to easily search Graylog for a specific application's logs
 - `format="RFC5424"`
@@ -52,7 +51,7 @@ This directory contains a minimal app that can be used to test sending log4j2 lo
     Including `<LoggerFields>` can add more information to the log, all of which is recognized by Graylog as separate
     fields.
 
-These can all be safely omitted:
+These parameters can all be safely omitted:
 - `enterpriseNumber="18060"`
     - This is the default value
 - `facility="LOCAL0"`
