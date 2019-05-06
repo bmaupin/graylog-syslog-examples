@@ -38,7 +38,7 @@ This directory contains a minimal app that can be used to test sending log4j1 lo
 - `<layout class="org.apache.log4j.EnhancedPatternLayout">`
     - This layout is necessary in order to use `%throwable` (see below)
 - `%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ}`
-    - This date pattern can be parsed by Graylog without any additional configuration, including parsing the millisecond
+    - This date pattern can be parsed by Graylog without any additional configuration, including parsing the milliseconds
     correctly.
 - `%throwable`
     - If a log includes a stack trace, by default the syslog appender will send each line of the stack trace as a
@@ -47,11 +47,11 @@ This directory contains a minimal app that can be used to test sending log4j1 lo
 
 These parameters can all be safely omitted:
 - `<param name="Facility" value="USER"/>`
-    - This should be omitted unless you specifically want to override the facility.
+    - This can be omitted unless you specifically want to override the facility.
 - `<param name="FacilityPrinting" value="true"/>`
     - This should be omitted (`FacilityPrinting` is false by default) because it will add the string value of the
     facility to the beginning of the message, which will prevent Graylog from correctly parsing the timestamp of the
     message.
 - `<param name="Header" value="true"/>`
-    - This causes a less accurate timestamp to be set in the header (it doesn't include year or milliseconds) which
-    overrides the timestamp in the log.
+    - This should be omitted because it causes a less accurate timestamp to be set in the header (it doesn't include
+    year or milliseconds), which overrides the timestamp in the log.
