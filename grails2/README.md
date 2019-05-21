@@ -33,6 +33,8 @@ This directory contains a minimal script that can be used to test sending Grails
     ./grailsw run-script scripts/SendTestLogs.groovy
     ```
 
+    (Ignore errors as these are intentionally generated for test purposes)
+
 
 ### Notes on syslog appender configuration
 See [../log4j1/README.md](../log4j1/README.md)
