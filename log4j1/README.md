@@ -53,5 +53,6 @@ These parameters can all be safely omitted:
     facility to the beginning of the message, which will prevent Graylog from correctly parsing the timestamp of the
     message.
 - `<param name="Header" value="true"/>`
-    - This should be omitted because it causes a less accurate timestamp to be set in the header (it doesn't include
-    year or milliseconds), which overrides the timestamp in the log.
+    - This will include an [RFC 5424](https://tools.ietf.org/html/rfc5424) header with the timestamp and hostname, but
+    this should be omitted because the timestamp in the header is less accurate (it doesn't include year or
+    milliseconds) and overrides the timestamp in the log.
