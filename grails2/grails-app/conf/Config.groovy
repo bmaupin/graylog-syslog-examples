@@ -107,7 +107,7 @@ log4j.main = {
         appender new org.apache.log4j.net.SyslogAppender(
             name: 'syslog',
             syslogHost: 'localhost:514',
-            layout: new org.apache.log4j.EnhancedPatternLayout(conversionPattern: "%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} ${grails.util.Metadata.current.getApplicationName()} [%t] %-5p %c %x - %m%n%throwable")
+            layout: new org.apache.log4j.EnhancedPatternLayout(conversionPattern: "1 %d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} ${InetAddress.getLocalHost().getHostName()} ${grails.util.Metadata.current.getApplicationName()} [%t] %-5p %c %x - %m%n%throwable")
         )
     }
     root {
