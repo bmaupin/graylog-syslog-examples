@@ -2,20 +2,21 @@
 
 #### Sending Spring Boot logs using log4j2 (recommended)
 
-Spring Boot uses logback by default, which unfortunately has a very limited syslog appender. As such, it is recommended
-to use log4j2:
-
 1. Update your Maven or Gradle configuration to include the `spring-boot-starter-log4j2` dependency and exclude the
-`spring-boot-starter-logging` dependency:
+`spring-boot-starter-logging` dependency
 
-    [Configure Log4j for Logging](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html#howto-configure-log4j-for-logging)
+    See [Configure Log4j for Logging](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html#howto-configure-log4j-for-logging)
 
 2. Add a log4j2 configuration to src/main/resources/log4j2.xml
 
-    See [log4j2](../log4j2/).
+    See [log4j2](../log4j2/)
 
 
 #### Sending Spring Boot logs using logback
+
+**Note:** Although Spring Boot uses logback by default, it has a very limited syslog appender and as such is not
+recommended. If you use logback, you will have less accurate timestamps in Graylog, and it will be harder to search for
+your application logs because Graylog will not set the `application_name` field or other structured data fields.
 
 1. Add a logback configuration to src/main/resources/logback.xml, e.g.:
 
