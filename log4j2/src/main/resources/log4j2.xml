@@ -13,6 +13,7 @@
         <KeyValuePair key="exception" value="%ex{full}"/>
       </LoggerFields>
     </Syslog>
+  </Appenders>
 
   <Loggers>
     <Logger name="org.apache.log4j.xml" level="info"/>
