@@ -1,4 +1,4 @@
-### Sending log4j2 logs to Graylog via syslog
+## Sending log4j2 logs to Graylog via syslog
 1. Add a syslog appender in `<Appenders>`:
 
     ```xml
@@ -23,7 +23,7 @@
     ```
 
 
-### Testing
+## Testing
 This directory contains a minimal app that can be used to test sending log4j2 logs to Graylog via syslog. To use it:
 
 1. Modify src/main/resources/log4j2.xml as desired (see above)
@@ -35,7 +35,7 @@ This directory contains a minimal app that can be used to test sending log4j2 lo
     ```
 
 
-### Notes on syslog appender configuration
+## Notes on syslog appender configuration
 - `appName=`
     - Optional but highly recommended. This sets the RFC 5424
     [APP-NAME](https://tools.ietf.org/html/rfc5424#section-6.2.5), which will be set as the `application_name` field in

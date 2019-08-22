@@ -1,4 +1,4 @@
-### Sending log4j1 logs to Graylog via syslog
+## Sending log4j1 logs to Graylog via syslog
 1. Add a syslog appender:
 
     ```xml
@@ -23,7 +23,7 @@
     ```
 
 
-### Testing
+## Testing
 This directory contains a minimal app that can be used to test sending log4j1 logs to Graylog via syslog. To use it:
 
 1. Modify src/main/resources/log4j.xml as desired (see above)
@@ -35,7 +35,7 @@ This directory contains a minimal app that can be used to test sending log4j1 lo
     ```
 
 
-### Notes on syslog appender configuration
+## Notes on syslog appender configuration
 - `<layout class="org.apache.log4j.EnhancedPatternLayout">`
     - This layout is necessary in order to use `%throwable` (see below)
 - `ConversionPattern` values
