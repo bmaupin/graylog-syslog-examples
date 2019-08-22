@@ -7,12 +7,11 @@
  */
 
 plugins {
-    // Apply the java plugin to add support for Java
     id 'java'
-
-    // Apply the application plugin to add support for building a CLI application
-    id 'application'
+    id 'org.springframework.boot' version '2.1.7.RELEASE'
 }
+
+apply plugin: 'io.spring.dependency-management'
 
 repositories {
     // Use jcenter for resolving dependencies.
@@ -21,14 +20,10 @@ repositories {
 }
 
 dependencies {
-    // This dependency is used by the application.
-    implementation 'com.google.guava:guava:28.0-jre'
-
-    // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'
+    implementation 'org.springframework.boot:spring-boot-starter'
 }
 
-application {
+bootJar {
     // Define the main class for the application
-    mainClassName = 'spring.boot.App'
+    mainClassName = 'test.App'
 }
