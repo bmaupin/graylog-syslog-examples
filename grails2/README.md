@@ -13,6 +13,10 @@
 
     Change the host and port as needed.
 
+    **Note:** If you have `force_rdns: true` set in your Graylog input, you can replace
+    `${InetAddress.getLocalHost().getHostName()}` with `-` as Graylog should automatically be able to detect your log
+    source.
+
 1. Reference the syslog appender in the root logger, e.g.:
 
     ```groovy

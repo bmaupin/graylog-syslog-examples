@@ -14,6 +14,9 @@
     `hostname` to the FQDN of the server (this will be populated as the `source` field in Graylog) and change
     `testlog4j1` to your application name (this will be populated as the `application_name` field in Graylog).
 
+    **Note:** If you have `force_rdns: true` set in your Graylog input, you can replace `hostname` with `-` as Graylog
+    should automatically be able to detect your log source.
+
 1. Reference the syslog appender in the root logger, e.g.:
 
     ```xml
