@@ -1,0 +1,14 @@
+{
+  "name": "test-graylog-syslog-winston",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "winston": "^3.3.3"
+  }
+}
