@@ -26,7 +26,7 @@
 ## Testing
 This directory contains a minimal app that can be used to test sending log4j2 logs to Graylog via syslog. To use it:
 
-1. Modify src/main/resources/log4j2.xml as desired (see above)
+1. Modify [src/main/resources/log4j2.xml](src/main/resources/log4j2.xml) as desired (see above)
 
 1. Run the app
 
