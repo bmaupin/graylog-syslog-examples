@@ -41,7 +41,7 @@ your application logs because Graylog will not set the `application_name` field 
 This directory contains a minimal app that can be used to test sending Spring Boot logs to Graylog via syslog. To use
 it:
 
-1. Modify src/main/resources/log4j2.xml as desired (see [log4j2](../log4j2/))
+1. Modify [src/main/resources/log4j2.xml](src/main/resources/log4j2.xml) as desired (see [log4j2](../log4j2/))
 
 1. Run the app
 

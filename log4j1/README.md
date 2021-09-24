@@ -2,7 +2,7 @@
 1. Add a syslog appender:
 
     ```xml
-    <appender name="syslog2" class="org.apache.log4j.net.SyslogAppender">
+    <appender name="syslog" class="org.apache.log4j.net.SyslogAppender">
       <param name="SyslogHost" value="localhost:514"/>
       <layout class="org.apache.log4j.EnhancedPatternLayout">
         <param name="ConversionPattern" value="1 %d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} hostname testlog4j1 [%t] %-5p %c %x - %m%n%throwable"/>
@@ -29,7 +29,7 @@
 ## Testing
 This directory contains a minimal app that can be used to test sending log4j1 logs to Graylog via syslog. To use it:
 
-1. Modify src/main/resources/log4j.xml as desired (see above)
+1. Modify [src/main/resources/log4j.xml](src/main/resources/log4j.xml) as desired (see above)
 
 1. Run the app
 

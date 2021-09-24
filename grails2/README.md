@@ -1,4 +1,7 @@
 ## Sending Grails 2 logs to Graylog via syslog
+
+Grails 2 uses Log4j 1 by default. For more notes on the syslog appender configuration, see [../log4j1/README.md](../log4j1/README.md)
+
 1. Add a syslog appender:
 
     ```groovy
@@ -27,9 +30,10 @@
 
 
 ## Testing
+
 This directory contains a minimal script that can be used to test sending Grails 2 logs to Graylog via syslog. To use it:
 
-1. Modify grails-app/conf/Config.groovy as desired (see above)
+1. Modify [grails-app/conf/Config.groovy](grails-app/conf/Config.groovy) as desired (see above)
 
 1. Run the script
 
@@ -38,7 +42,3 @@ This directory contains a minimal script that can be used to test sending Grails
     ```
 
     (Ignore errors as these are intentionally generated for test purposes)
-
-
-## Notes on syslog appender configuration
-See [../log4j1/README.md](../log4j1/README.md)
