@@ -1,6 +1,7 @@
 'use strict';
 
 const { createLogger, format, transports } = require('winston');
+const Syslog = require('winston-syslog').Syslog;
 
 const { combine, label, printf, timestamp } = format;
 
@@ -16,7 +17,20 @@ const logger = createLogger({
     timestamp(),
     myFormat
   ),
-  transports: [new transports.Console()],
+  transports: [
+    new transports.Console(),
+    new Syslog({
+      // Defaults to localhost
+      // host: '127.0.0.1',
+      port: 5140,
+      // This is the default
+      // protocol: 'udp4',
+      // TODO: what does this do?
+      app_name: 'test_app_name',
+      // TODO: do we need this?
+      // eol: '\n'
+    }),
+  ],
 });
 
 const main = () => {
