@@ -9,6 +9,22 @@ Note that in most situations it would be preferable to send logs to Graylog as [
 
 ## Testing
 
+#### See logs sent by applications
+
+If you want to see the log messages that are being sent, a quick way is to use netcat to listen on a local port and dump the logs to the console; this is also helpful for troubleshooting if, for example, the timestamp in the log is improperly formatted (which may make it difficult to find the log in Graylog):
+
+```
+nc -klu 5140
+```
+
+Or to insert a newline between every message:
+
+```
+while true; do nc -lu 5140 -w0; echo; done
+```
+
+Alternatively, see below for setting up a test Graylog server.
+
 #### Setting up a local Graylog server for testing
 
 1. Clone this repo: https://github.com/Graylog2/docker-compose/
