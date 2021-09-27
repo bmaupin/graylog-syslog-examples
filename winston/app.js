@@ -6,7 +6,9 @@ const Syslog = require('winston-syslog').Syslog;
 const { combine, label, printf, timestamp } = format;
 
 const myFormat = printf(({ label, level, message, stack, timestamp }) => {
-  return `${timestamp} [${label}] ${level}: ${message} ${stack}`;
+  return (
+    `${timestamp} [${label}] ${level}: ${message}` + (stack ? `\n${stack}` : '')
+  );
 });
 
 const logger = createLogger({
