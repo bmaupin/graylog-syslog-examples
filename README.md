@@ -79,3 +79,29 @@ Alternatively, see below for setting up a test Graylog server.
 1. Go to _Search_ to see any logs you send to the server
 
    - You can see the full message under `full_message` as needed
+
+## Graylog and syslog
+
+#### BSD (RFC 3164) vs RFC 5424
+
+Some syslog clients may give the option of sending logs formatted as BSD ([RFC 3164](https://datatracker.ietf.org/doc/html/rfc3164)) or [RFC 5424](https://datatracker.ietf.org/doc/html/rfc5424) messages. Always prefer RFC 5424 when possible, because it has the following advantages:
+
+- More accurate timestamps, including milliseconds and timezone
+- More fields, including application name, process ID, message ID, structured data (custom fields)
+
+The biggest painpoint when sending BSD-formatted messages to Graylog is the timestamp:
+
+- Because there's no time zone, Graylog will always assume logs are sent with a UTC time zone
+- Because there are no milliseconds, logs will likely be out of order
+
+Here is an example of a BSD-formatted syslog message (generated using [log4j2](./log4j2) without `format`):
+
+```
+<131>Sep 27 11:33:14 localhost Test error message, without stack trace
+```
+
+Here is an example of the same message formatted according to RFC 5424 (generated using [log4j2](./log4j2) with `format="RFC5424"`):
+
+```
+<131>1 2021-09-27T11:33:14.564-04:00 localhost testlog4j2 56903 - [mdc@18060 category="App" exception="" priority="ERROR" thread="main"] Test error message, without stack trace
+```
