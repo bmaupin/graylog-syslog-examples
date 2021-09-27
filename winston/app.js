@@ -1,6 +1,6 @@
 'use strict';
 
-const { createLogger, format, transports } = require('winston');
+const { config, createLogger, format, transports } = require('winston');
 const Syslog = require('winston-syslog').Syslog;
 
 const { combine, label, printf, timestamp } = format;
@@ -13,6 +13,8 @@ const myFormat = printf(({ label, level, message, stack, timestamp }) => {
 
 const logger = createLogger({
   level: 'debug',
+  // https://github.com/winstonjs/winston-syslog#log-levels
+  levels: config.syslog.levels,
   format: combine(
     // label would be a great place to put the application name so it can be used as a search filter in Graylog
     label({ label: 'test-graylog-syslog' }),
