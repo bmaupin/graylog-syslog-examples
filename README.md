@@ -105,3 +105,17 @@ Here is an example of the same message formatted according to RFC 5424 (generate
 ```
 <131>1 2021-09-27T11:33:14.564-04:00 localhost testlog4j2 56903 - [mdc@18060 category="App" exception="" priority="ERROR" thread="main"] Test error message, without stack trace
 ```
+
+#### How Graylog parses syslog messages
+
+Given the sample RFC 5424 above, here is how Graylog will parse it:
+
+- The first part (in angle brackets) is the syslog [facility](https://datatracker.ietf.org/doc/html/rfc5424#section-6.2), which gets set to these fields in Graylog: `facility`, `facility_num`, and `level`
+- After that should be a `1`, which tells Graylog that the message adheres to [syslog protocol version 1 (RFC 5424)](https://datatracker.ietf.org/doc/html/rfc5424#section-6.2.2)
+- The next field is the [timestamp](https://datatracker.ietf.org/doc/html/rfc5424#section-6.2.3), which Graylog parses providing that it's properly formatted
+- Next field is the [hostname](https://datatracker.ietf.org/doc/html/rfc5424#section-6.2.4), set to the `source` field in Graylog
+- Next field is the [application name](https://datatracker.ietf.org/doc/html/rfc5424#section-6.2.5), set to the `application_name` field in Graylog
+- Next field is the [process ID](https://datatracker.ietf.org/doc/html/rfc5424#section-6.2.6), set to the `process_id` field in Graylog
+- Next field is the [message ID](https://datatracker.ietf.org/doc/html/rfc5424#section-6.2.6), which above is empty (`-` is an empty value in syslog; see [NILVALUE](https://datatracker.ietf.org/doc/html/rfc5424#section-6))
+- If [structured data](https://datatracker.ietf.org/doc/html/rfc5424#section-6.3) is present, each item will each get parsed as fields in Graylog
+- Everything else gets set to the `message` field in Graylog
