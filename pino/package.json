@@ -1,0 +1,16 @@
+{
+  "name": "test-graylog-syslog-pino",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.ts",
+  "scripts": {
+    "start": "ts-node ."
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "pino": "^6.13.3",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.3"
+  }
+}
