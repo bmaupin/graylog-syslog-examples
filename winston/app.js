@@ -5,24 +5,29 @@ const Syslog = require('winston-syslog').Syslog;
 
 const { combine, label, printf, timestamp } = format;
 
-const myFormat = printf(({ label, level, message, stack, timestamp }) => {
+const consoleFormat = printf(({ label, level, message, stack, timestamp }) => {
   return (
     `${timestamp} [${label}] ${level}: ${message}` + (stack ? `\n${stack}` : '')
   );
+});
+
+// Syslog already includes the timestamp and application name (label) so we can leave those out
+const syslogFormat = printf(({ level, message, stack }) => {
+  return `${level}: ${message}` + (stack ? `\n${stack}` : '');
 });
 
 const logger = createLogger({
   level: 'debug',
   // https://github.com/winstonjs/winston-syslog#log-levels
   levels: config.syslog.levels,
-  format: combine(
-    // label would be a great place to put the application name so it can be used as a search filter in Graylog
-    label({ label: 'test-graylog-syslog' }),
-    timestamp(),
-    myFormat
-  ),
   transports: [
-    new transports.Console(),
+    new transports.Console({
+      format: combine(
+        label({ label: 'test-graylog-syslog' }),
+        timestamp(),
+        consoleFormat
+      ),
+    }),
     new Syslog({
       // Defaults to localhost
       // host: '127.0.0.1',
@@ -33,6 +38,7 @@ const logger = createLogger({
       app_name: 'test-graylog-syslog',
       // This is needed so that the proper timestamp format is used; see ../README.md
       type: '5424',
+      format: syslogFormat,
     }),
   ],
 });
