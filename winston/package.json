@@ -9,6 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "glossy": "github:pavkriz/glossy",
     "winston": "^3.3.3",
     "winston-syslog": "^2.4.4"
   }
