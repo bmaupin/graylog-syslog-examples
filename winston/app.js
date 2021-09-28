@@ -20,6 +20,8 @@ const logger = createLogger({
   level: 'debug',
   // https://github.com/winstonjs/winston-syslog#log-levels
   levels: config.syslog.levels,
+  // This allows the custom format for each transport to contain the stack trace (https://github.com/winstonjs/winston/issues/1338#issuecomment-697958085)
+  format: format.errors({ stack: true }),
   transports: [
     new transports.Console({
       format: combine(
