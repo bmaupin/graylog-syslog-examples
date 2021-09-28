@@ -31,8 +31,8 @@ const logger = createLogger({
       // protocol: 'udp4',
       // TODO: what does this do?
       app_name: 'test_app_name',
-      // TODO: do we need this?
-      // eol: '\n'
+      // This is needed so that the proper timestamp format is used; see ../README.md
+      type: '5424',
     }),
   ],
 });
