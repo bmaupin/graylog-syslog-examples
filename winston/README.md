@@ -1,5 +1,7 @@
 ## Sending Node.js logs to Graylog via syslog using winston
 
+See [app.js](app.js) for a full example.
+
 1. Follow the instructions here to install and configure `winston-syslog`: [https://github.com/winstonjs/winston-syslog#readme](https://github.com/winstonjs/winston-syslog#readme)
 
 1. In the transport options, set `type: '5424',` to use RFC 5424 formatted logs (see [../README.md](../README.md))
@@ -31,7 +33,7 @@ it:
    npm install
    ```
 
-1. Modify app.js as desired (e.g. change the port and hostname)
+1. Modify [app.js](app.js) as desired (e.g. change the port and hostname)
 
 1. Run the app
 

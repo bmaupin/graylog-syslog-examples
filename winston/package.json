@@ -2,14 +2,16 @@
   "name": "test-graylog-syslog-winston",
   "version": "0.0.1",
   "description": "",
-  "main": "app.js",
+  "main": "app.ts",
   "scripts": {
-    "start": "node ."
+    "start": "ts-node ."
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "glossy": "github:pavkriz/glossy",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.3",
     "winston": "^3.3.3",
     "winston-syslog": "^2.4.4"
   }
