@@ -1,6 +1,6 @@
 'use strict';
 
-const { config, createLogger, format, transports } = require('winston');
+import { config, createLogger, format, transports } from 'winston';
 const Syslog = require('winston-syslog').Syslog;
 
 const { combine, label, printf, timestamp } = format;
@@ -45,15 +45,6 @@ const logger = createLogger({
   ],
 });
 
-const main = () => {
-  testLoggingWithStackTraces();
-
-  // Hack to work around https://github.com/winstonjs/winston-syslog/issues/155
-  setTimeout(() => {
-    process.exit();
-  }, 500);
-};
-
 const testLoggingWithStackTraces = () => {
   makeStackTraceLonger();
 };
@@ -85,6 +76,15 @@ const logInfoWithStackTrace = () => {
 const logDebugWithStackTrace = () => {
   logger.debug('Test debug message, without stack trace');
   logger.debug(new Error('Test exception message'));
+};
+
+const main = () => {
+  testLoggingWithStackTraces();
+
+  // Hack to work around https://github.com/winstonjs/winston-syslog/issues/155
+  setTimeout(() => {
+    process.exit();
+  }, 500);
 };
 
 main();
