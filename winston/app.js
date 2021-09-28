@@ -29,8 +29,8 @@ const logger = createLogger({
       port: 5140,
       // This is the default
       // protocol: 'udp4',
-      // TODO: what does this do?
-      app_name: 'test_app_name',
+      // This gets set to the `application_name` field in Graylog
+      app_name: 'test-graylog-syslog',
       // This is needed so that the proper timestamp format is used; see ../README.md
       type: '5424',
     }),
