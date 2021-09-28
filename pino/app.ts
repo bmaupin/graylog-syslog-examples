@@ -1,6 +1,10 @@
 'use strict';
 
-const logger = require('pino')();
+const pino = require('pino');
+const transport = pino.transport({
+  target: 'pino-pretty',
+});
+const logger = pino(transport);
 
 const testLoggingWithStackTraces = () => {
   makeStackTraceLonger();
