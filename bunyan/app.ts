@@ -1,9 +1,26 @@
 const bunyan = require('bunyan');
-const logger = bunyan.createLogger({ name: 'graylog-syslog-bunyan' });
+const bsyslog = require('bunyan-syslog');
+
+const logger = bunyan.createLogger({
+  name: 'graylog-syslog-bunyan',
+  level: 'debug',
+  streams: [
+    {
+      stream: process.stdout,
+    },
+    {
+      type: 'raw',
+      stream: bsyslog.createBunyanStream({
+        host: '127.0.0.1',
+        port: 5140,
+      }),
+    },
+  ],
+});
 
 const logErrorWithStackTrace = () => {
   logger.error('Test error message, without stack trace');
-  // logger.error(new Error('Test exception message'));
+  logger.error(new Error('Test exception message'));
 };
 
 const logInfoWithStackTrace = () => {
@@ -18,8 +35,8 @@ const logDebugWithStackTrace = () => {
 
 const okayThatsEnough = () => {
   logErrorWithStackTrace();
-  // logInfoWithStackTrace();
-  // logDebugWithStackTrace();
+  logInfoWithStackTrace();
+  logDebugWithStackTrace();
 };
 
 const notLongEnough = () => {

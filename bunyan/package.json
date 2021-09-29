@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "bunyan": "^1.8.15",
+    "bunyan-syslog": "^0.3.3",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3"
   }
