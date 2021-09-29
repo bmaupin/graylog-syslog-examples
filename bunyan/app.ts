@@ -53,6 +53,11 @@ const testLoggingWithStackTraces = () => {
 
 const main = () => {
   testLoggingWithStackTraces();
+
+  // Hack to work around https://github.com/joyent/node-bunyan-syslog/issues/60
+  setTimeout(() => {
+    process.exit();
+  }, 500);
 };
 
 main();
