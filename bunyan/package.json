@@ -1,0 +1,16 @@
+{
+  "name": "test-graylog-syslog-bunyan",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.ts",
+  "scripts": {
+    "start": "ts-node ."
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bunyan": "^1.8.15",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.3"
+  }
+}
