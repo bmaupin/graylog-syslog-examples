@@ -33,7 +33,7 @@ it:
    npm install
    ```
 
-1. Modify [app.js](app.js) as desired (e.g. change the port and hostname)
+1. Modify [app.ts](app.ts) as desired (e.g. change the port and hostname)
 
 1. Run the app
 
