@@ -8,6 +8,8 @@ Note that in most situations it would be preferable to send logs to Graylog as [
   - [Log4j 2](log4j2/)
   - [Spring Boot](spring-boot/)
 - Node.js
+  - [Bunyan](bunyan/)
+  - [Pino](pino/)
   - [Winston](winston/)
 
 ## Testing
