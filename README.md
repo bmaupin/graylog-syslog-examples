@@ -87,6 +87,31 @@ Alternatively, see below for setting up a test Graylog server.
 
 ## Graylog and syslog
 
+#### TCP vs UDP
+
+TCP offers a lot of advantages over UDP, however there's a catch when sending syslog messages to Graylog over TCP: by default, the Graylog TCP input will split logs on the newline ('\n') character, splitting any multi-line messages into separate logs.
+
+This is controlled by the `use_null_delimiter` setting in the Syslog TCP input. When set to `false` (the default), Graylog will split messages on the newline character. When set to `true`, Graylog will split messages on the null character (`\0`). **However**, in my testing, setting `use_null_delimiter: true` caused logs that weren't terminated with a null character to not show in Graylog at all (regardless of the number of lines in the log).
+
+Here are a few possible options to deal with this:
+
+- Send logs to the Syslog UDP input
+- Or set `use_null_delimiter: true` in the Syslog TCP input and make sure they're null-terminated
+
+  - e.g. [Winston](winston/) can do this by using this setting in the syslog transport:
+
+    ```javascript
+    eol: '\0',
+    ```
+
+- Alternatively, set `use_null_delimiter: false` in the Syslog TCP input and use a different separator between lines; there's actually a unicode character meant for this purpose: [`\u2028`](https://www.fileformat.info/info/unicode/char/2028/index.htm). Unfortunately most syslog libraries do not seem to offer an option to override the line separator.
+
+  - e.g. [log4j2](./log4j2) can do this:
+
+    ```xml
+    <PatternLayout pattern="[%d] %-5p %m%n %throwable{separator(\u2028)}"
+    ```
+
 #### BSD (RFC 3164) vs RFC 5424
 
 Some syslog clients may give the option of sending logs formatted as BSD ([RFC 3164](https://datatracker.ietf.org/doc/html/rfc3164)) or [RFC 5424](https://datatracker.ietf.org/doc/html/rfc5424) messages. Always prefer RFC 5424 when possible, because it has the following advantages:
