@@ -16,7 +16,7 @@ See [app.js](app.js) for a full example.
 
    The application name (`app_name`) will be sent by the syslog transport
 
-1. Work around [https://github.com/winstonjs/winston-syslog/issues/139](https://github.com/winstonjs/winston-syslog/issues/139)
+1. Work around [https://github.com/winstonjs/winston-syslog/issues/139](https://github.com/winstonjs/winston-syslog/issues/139) and [https://github.com/winstonjs/winston-syslog/issues/156](https://github.com/winstonjs/winston-syslog/issues/156)
 
    1. Install the newer fork of glossy
 
