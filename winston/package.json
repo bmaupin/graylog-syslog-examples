@@ -9,7 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "glossy": "github:pavkriz/glossy",
+    "@myndzi/glossy": "^0.1.11",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3",
     "winston": "^3.3.3",

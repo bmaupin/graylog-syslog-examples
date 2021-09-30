@@ -2,6 +2,7 @@
 
 import { config, createLogger, format, transports } from 'winston';
 const Syslog = require('winston-syslog').Syslog;
+const glossy = require('@myndzi/glossy');
 
 const { combine, label, printf, timestamp } = format;
 
@@ -25,7 +26,7 @@ const logger = createLogger({
   transports: [
     new transports.Console({
       format: combine(
-        label({ label: 'test-graylog-syslog' }),
+        label({ label: 'graylog-syslog-winston' }),
         timestamp(),
         consoleFormat
       ),
@@ -37,10 +38,11 @@ const logger = createLogger({
       // This is the default
       // protocol: 'udp4',
       // This gets set to the `application_name` field in Graylog
-      app_name: 'test-graylog-syslog',
+      app_name: 'graylog-syslog-winston',
       // This is needed so that the proper timestamp format is used; see ../README.md
       type: '5424',
       format: syslogFormat,
+      customProducer: glossy.Produce,
     }),
   ],
 });

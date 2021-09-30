@@ -18,9 +18,27 @@ See [app.js](app.js) for a full example.
 
 1. Work around [https://github.com/winstonjs/winston-syslog/issues/139](https://github.com/winstonjs/winston-syslog/issues/139)
 
-   ```
-   npm install git+https://github.com/pavkriz/glossy
-   ```
+   1. Install the newer fork of glossy
+
+      ```
+      npm install @myndzi/glossy
+      ```
+
+   1. Import the fork of glossy
+
+      ```javascript
+      const glossy = require('@myndzi/glossy');
+      ```
+
+   1. Pass the producer from the fork of glossy into the syslog transport via `customProducer`:
+
+      ```javascript
+      const logger = winston.createLogger({
+      transports: [
+         new winston.transports.Syslog({
+            customProducer: glossy.Produce,
+            // ...
+      ```
 
 ## Testing
 
