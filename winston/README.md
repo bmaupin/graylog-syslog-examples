@@ -40,6 +40,21 @@ See [app.js](app.js) for a full example.
             // ...
       ```
 
+#### Sending logs over TCP
+
+The above instructions are for sending logs over UDP; to send them over TCP:
+
+1. Use these settings in the syslog transport:
+
+   ```javascript
+   protocol: 'tcp4',
+   eol: '\0',
+   ```
+
+1. In the Graylog Syslog TCP transport, set `use_null_delimiter: true`
+
+For more information, see the _TCP vs UDP_ section here: [../README.md](../README.md)
+
 ## Testing
 
 This directory contains a minimal app that can be used to test sending logs to Graylog via syslog. To use
