@@ -22,10 +22,10 @@ If you want to see the log messages that are being sent, a quick way is to use n
 nc -klu 5140
 ```
 
-Or to insert a newline between every message:
+Or for TCP:
 
 ```
-while true; do nc -lu 5140 -w0; echo; done
+nc -kl 5140
 ```
 
 Alternatively, see below for setting up a test Graylog server.
@@ -104,13 +104,7 @@ Here are a few possible options to deal with this:
     eol: '\0',
     ```
 
-- Alternatively, set `use_null_delimiter: false` in the Syslog TCP input and use a different separator between lines; there's actually a unicode character meant for this purpose: [`\u2028`](https://www.fileformat.info/info/unicode/char/2028/index.htm). Unfortunately most syslog libraries do not seem to offer an option to override the line separator.
-
-  - e.g. [log4j2](./log4j2) can do this:
-
-    ```xml
-    <PatternLayout pattern="[%d] %-5p %m%n %throwable{separator(\u2028)}"
-    ```
+- Alternatively, set `use_null_delimiter: false` in the Syslog TCP input and use a different separator between lines. Unfortunately, I haven't found a separator that shows up as proper newlines in the Graylog UI as it does when sending over UDP. Separators such as `\r` and [`\u2028`](https://www.fileformat.info/info/unicode/char/2028/index.htm) get converted to spaces.
 
 #### BSD (RFC 3164) vs RFC 5424
 
