@@ -23,6 +23,30 @@
        <AppenderRef ref="syslog"/>
    ```
 
+#### Sending logs over TCP
+
+The above instructions are for sending logs over UDP; to send them over TCP:
+
+1. In the Graylog Syslog TCP transport, set `use_null_delimiter: false`
+
+   Setting `use_null_delimiter: true` won't work because there doesn't seem to be a way to add a null byte to the end of the log message, so Graylog will never show the log. There may be a way to do this with Java: [https://logging.apache.org/log4j/2.x/manual/extending.html](https://logging.apache.org/log4j/2.x/manual/extending.html)
+
+1. In the appender, change `protocol="UDP"` to `protocol="TCP"` and add `newLine="true"`, e.g.
+
+   ```xml
+   <Syslog newLine="true" protocol="TCP" ...
+   ```
+
+1. Configure the exception field to use a different separator (the default is a newline, which will split the logs)
+
+   ```xml
+   <KeyValuePair key="exception" value="%ex{full}{separator(&#8232;)}"/>
+   ```
+
+   **Note**: Unfortunately, this separator and others I tested (`&#13;`) get converted to spaces in the Graylog UI. I haven't found one that displays properly as newlines as when the logs are sent over UDP.
+
+For more information, see the _TCP vs UDP_ section here: [../README.md](../README.md)
+
 ## Testing
 
 This directory contains a minimal app that can be used to test sending log4j2 logs to Graylog via syslog. To use it:
