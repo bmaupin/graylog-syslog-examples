@@ -1,10 +1,30 @@
 'use strict';
 
 const pino = require('pino');
-const transport = pino.transport({
-  target: 'pino-pretty',
+const logger = pino({
+  transport: {
+    pipeline: [
+      {
+        target: 'pino-pretty',
+      },
+      {
+        target: 'pino-syslog',
+        options: {
+          appname: 'graylog-syslog-pino',
+        },
+      },
+      {
+        target: 'pino-socket',
+        options: {
+          // Default is 127.0.0.1
+          // address: '127.0.0.1',
+          port: 5141,
+          mode: 'udp',
+        },
+      },
+    ],
+  },
 });
-const logger = pino(transport);
 
 const logErrorWithStackTrace = () => {
   logger.error('Test error message, without stack trace');
