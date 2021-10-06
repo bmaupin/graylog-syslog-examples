@@ -12,7 +12,7 @@
     "pino": "^7.0.0-rc.8",
     "pino-pretty": "^7.0.1",
     "pino-socket": "^4.0.1",
-    "pino-syslog": "github:Eomm/pino-syslog#pino-7",
+    "pino-syslog": "^2.0.0",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3"
   }

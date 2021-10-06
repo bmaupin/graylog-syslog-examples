@@ -1,8 +1,6 @@
-#### ⚠ Pino is not yet recommended for sending logs to Graylog via syslog
+## Sending Node.js logs to Graylog via syslog using pino
 
-The current stable version of Pino ([v6](https://github.com/pinojs/pino/tree/v6.x)) works by transforming logs using shell piping. I'm not sure how well this would work, for example, to log to stdout AND syslog at the same time. It also seems like it would add complexity when using Pino with containers.
-
-[Pino v7](https://github.com/pinojs/pino) provides a way to transform logs without needing to rely on shell piping, but it is still under development.
+⚠ This is subject to change as [Pino v7](https://github.com/pinojs/pino) is still under development
 
 1. Install Pino
 
@@ -14,13 +12,11 @@ The current stable version of Pino ([v6](https://github.com/pinojs/pino/tree/v6.
 
 1. Install pino-socket and pino-syslog
 
-   TODO: Update this once the following PR is merged: [https://github.com/pinojs/pino-syslog/pull/13](https://github.com/pinojs/pino-syslog/pull/13)
-
    ```
-   npm install pino-socket git+https://github.com/Eomm/pino-syslog/tree/pino-7
+   npm install pino-socket pino-syslog
    ```
 
-1. To send logs to syslog, use a feature of Pino called pipeline; this will first format the logs using pino-syslog and then send them to the syslog server using pino-socket, e.g.
+1. To send logs to syslog, use a [transport pipeline](https://getpino.io/#/docs/transports?id=creating-a-transport-pipeline); this will first format the logs using pino-syslog and then send them to the syslog server using pino-socket, e.g.
 
    ```javascript
    const logger = pino({
