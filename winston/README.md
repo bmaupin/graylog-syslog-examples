@@ -1,6 +1,6 @@
 ## Sending Node.js logs to Graylog via syslog using winston
 
-See [app.js](app.js) for a full example.
+See [app.ts](app.ts) for a full example.
 
 1. Follow the instructions here to install and configure `winston-syslog`: [https://github.com/winstonjs/winston-syslog#readme](https://github.com/winstonjs/winston-syslog#readme)
 
@@ -10,7 +10,7 @@ See [app.js](app.js) for a full example.
 
 1. (Recommended) remove `timestamp` from format
 
-   Timestamp isn't needed in the format since it will be sent by the syslog transport. See [app.js](app.js) for an example of using a custom format per transport.
+   Timestamp isn't needed in the format since it will be sent by the syslog transport. See [app.ts](app.ts) for an example of using a custom format per transport.
 
 1. (Recommended) remove `label` from format
 
