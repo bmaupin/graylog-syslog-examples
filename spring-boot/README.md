@@ -4,7 +4,7 @@
 
 1. Update your Maven or Gradle configuration to include the `spring-boot-starter-log4j2` dependency and exclude the `spring-boot-starter-logging` dependency
 
-   See [Configure Log4j for Logging](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html#howto-configure-log4j-for-logging)
+   See [Configure Log4j for Logging](https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.logging.log4j)
 
 2. Add a log4j2 configuration to src/main/resources/log4j2.xml
 
