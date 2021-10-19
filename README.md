@@ -53,12 +53,6 @@ Alternatively, see below for setting up a test Graylog server.
 
    Replace `...` with a valid timezone from http://joda-time.sourceforge.net/timezones.html, e.g. `America/New_York`
 
-1. Remove this line from docker-compose.yml:
-
-   ```yaml
-   restart: 'always'
-   ```
-
 1. Start the server
 
    ```
