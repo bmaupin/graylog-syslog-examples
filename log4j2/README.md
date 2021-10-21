@@ -3,7 +3,7 @@
 1. Add a syslog appender in `<Appenders>`:
 
    ```xml
-   <Syslog name="syslog" format="RFC5424" host="localhost" port="514" protocol="UDP" appName="testlog4j2" mdcId="mdc">
+   <Syslog name="Syslog" format="RFC5424" host="localhost" port="514" protocol="UDP" appName="testlog4j2" mdcId="mdc">
      <LoggerFields>
        <KeyValuePair key="thread" value="%t"/>
        <KeyValuePair key="priority" value="%p"/>
@@ -20,7 +20,7 @@
    ```xml
    <Loggers>
      <Root level="info">
-       <AppenderRef ref="syslog"/>
+       <AppenderRef ref="Syslog"/>
    ```
 
 #### Sending logs over TCP
