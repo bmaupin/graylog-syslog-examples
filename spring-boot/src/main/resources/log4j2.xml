@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
   <Appenders>
-    <Console name="STDOUT" target="SYSTEM_OUT">
+    <Console name="Console" target="SYSTEM_OUT">
       <PatternLayout pattern="%d %-5p [%t] %C{2} (%F:%L) - %m%n"/>
     </Console>
 
-    <Syslog name="syslog" format="RFC5424" host="localhost" port="5140" protocol="UDP" appName="testlog4j2" mdcId="mdc">
+    <Syslog name="Syslog" format="RFC5424" host="localhost" port="5140" protocol="UDP" appName="testlog4j2" mdcId="mdc">
       <LoggerFields>
         <KeyValuePair key="thread" value="%t"/>
         <KeyValuePair key="priority" value="%p"/>
@@ -16,10 +16,19 @@
   </Appenders>
 
   <Loggers>
-    <Logger name="org.apache.log4j.xml" level="info"/>
+    <!-- Default log levels copied from https://github.com/spring-projects/spring-boot/blob/main/spring-boot-project/spring-boot/src/main/resources/org/springframework/boot/logging/logback/defaults.xml -->
+    <Logger name="org.apache.catalina.startup.DigesterFactory" level="error"/>
+    <Logger name="org.apache.catalina.util.LifecycleBase" level="error"/>
+    <Logger name="org.apache.coyote.http11.Http11NioProtocol" level="warn"/>
+    <Logger name="org.apache.sshd.common.util.SecurityUtils" level="warn"/>
+    <Logger name="org.apache.tomcat.util.net.NioSelectorPool" level="warn"/>
+    <Logger name="org.eclipse.jetty.util.component.AbstractLifeCycle" level="error"/>
+    <Logger name="org.hibernate.validator.internal.util.Version" level="warn"/>
+    <Logger name="org.springframework.boot.actuate.endpoint.jmx" level="warn"/>
+
     <Root level="debug">
-      <AppenderRef ref="STDOUT"/>
-      <AppenderRef ref="syslog"/>
+      <AppenderRef ref="Console"/>
+      <AppenderRef ref="Syslog"/>
     </Root>
   </Loggers>
 </Configuration>
