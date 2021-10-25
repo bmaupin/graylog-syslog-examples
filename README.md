@@ -43,15 +43,17 @@ Alternatively, see below for setting up a test Graylog server.
 
 1. Set `GRAYLOG_PASSWORD_SECRET` and `GRAYLOG_ROOT_PASSWORD_SHA2` in the .env file according to the instructions in the file
 
-1. Set the time zone for the admin user in docker-compose.yml
+1. Set the time zone for the admin user
 
-   Add this under `graylog` > `environment`:
+   This will allow you to do searches in Graylog in your local timezone as the admin user
 
-   ```yaml
-   GRAYLOG_ROOT_TIMEZONE: '...'
-   ```
+   1. Add this line to the `.env` file you created:
 
-   Replace `...` with a valid timezone from http://joda-time.sourceforge.net/timezones.html, e.g. `America/New_York`
+      ```yaml
+      GRAYLOG_ROOT_TIMEZONE: '...'
+      ```
+
+      Replace `...` with a valid timezone from [http://joda-time.sourceforge.net/timezones.html](http://joda-time.sourceforge.net/timezones.html); copy the value from _Canonical ID_, e.g. `America/New_York`
 
 1. Start the server
 
