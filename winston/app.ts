@@ -83,10 +83,8 @@ const testLoggingWithStackTraces = () => {
 const main = () => {
   testLoggingWithStackTraces();
 
-  // Hack to work around https://github.com/winstonjs/winston-syslog/issues/155
-  setTimeout(() => {
-    process.exit();
-  }, 500);
+  // Work around https://github.com/winstonjs/winston-syslog/issues/155
+  logger.close();
 };
 
 main();
