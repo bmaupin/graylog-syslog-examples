@@ -87,5 +87,5 @@ it:
 1. Run the app
 
    ```
-   node start
+   npm start
    ```
