@@ -34,7 +34,7 @@
            options: {
              // The default is 127.0.0.1
              address: '127.0.0.1',
-             port: 5141,
+             port: 5140,
              mode: 'udp',
            },
          },
@@ -62,7 +62,7 @@
            target: 'pino-socket',
            options: {
              address: '127.0.0.1',
-             port: 5141,
+             port: 5140,
              mode: 'udp',
            },
          },

@@ -18,7 +18,7 @@ const logger = pino({
         options: {
           // Default is 127.0.0.1
           // address: '127.0.0.1',
-          port: 5141,
+          port: 5140,
           mode: 'udp',
         },
       },
