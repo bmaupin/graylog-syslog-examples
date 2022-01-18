@@ -4,9 +4,10 @@ const pino = require('pino');
 const logger = pino({
   transport: {
     pipeline: [
-      {
-        target: 'pino-pretty',
-      },
+      // This does not currently work
+      // {
+      //   target: 'pino-pretty',
+      // },
       {
         target: 'pino-syslog',
         options: {

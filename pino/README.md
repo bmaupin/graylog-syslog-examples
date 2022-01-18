@@ -1,13 +1,13 @@
 ## Sending Node.js logs to Graylog via syslog using pino
 
-⚠ This is subject to change as [Pino v7](https://github.com/pinojs/pino) is still under development
+> ⚠ This is subject to change as [Pino v7](https://github.com/pinojs/pino) is still under development
 
 1. Install Pino
 
    [https://github.com/pinojs/pino#readme](https://github.com/pinojs/pino#readme)
 
    ```
-   npm install pino@next
+   npm install pino
    ```
 
 1. Install pino-socket and pino-syslog
@@ -44,6 +44,8 @@
    ```
 
    You can also send logs to stdout and syslog; the example below requires pino-pretty (`npm install pino-pretty`):
+
+   > ⚠ The below example does not currently work ([https://github.com/pinojs/pino/issues/1302](https://github.com/pinojs/pino/issues/1302))
 
    ```javascript
    const logger = pino({

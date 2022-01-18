@@ -1,6 +1,5 @@
 {
   "name": "test-graylog-syslog-pino",
-  "version": "0.0.1",
   "description": "",
   "main": "app.ts",
   "scripts": {
@@ -9,11 +8,14 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "pino": "^7.0.0-rc.8",
-    "pino-pretty": "^7.0.1",
-    "pino-socket": "^4.0.1",
+    "pino": "^7.6.3",
+    "pino-pretty": "^7.3.0",
+    "pino-socket": "^4.1.0",
     "pino-syslog": "^2.0.0",
-    "ts-node": "^10.2.1",
-    "typescript": "^4.4.3"
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.9"
   }
 }
